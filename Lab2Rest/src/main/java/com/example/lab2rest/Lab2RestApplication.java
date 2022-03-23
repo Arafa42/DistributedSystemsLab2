@@ -22,17 +22,20 @@ public class Lab2RestApplication {
 
 	@GetMapping("/balance")
 	public String getBalance(){
+		System.out.println("VIEWING BALANCE");
 		return String.format("Your balance is %.2f", balance);
 	}
 
 	@PostMapping("/balance/deposit")
 	public String addMoney(@RequestParam(value = "amount") double amount) {
+		System.out.println("DEPOSITING " + amount + " TO BALANCE");
 		balance += amount;
 		return String.format("Money has been deposited. Your new balance is %.2f", balance);
 	}
 
 	@PostMapping("/balance/withdraw")
 	public String withdrawMoney(@RequestParam(value = "amount") double amount) {
+		System.out.println("WITHDRAWING " + amount + " FROM BALANCE");
 		balance -= amount;
 		return String.format("Money has been withdrawn. Your new balance is %.2f", balance);
 	}
